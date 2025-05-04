@@ -31,7 +31,6 @@
   ],
   "author": "John Agan <johnagan@gmail.com>",
   "license": "MIT",
-  "packageManager": "pnpm@10.10.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.11.0",
     "buildinglink": "^1.3.2"
