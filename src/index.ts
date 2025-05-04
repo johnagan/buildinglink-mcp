@@ -1,23 +1,15 @@
 #!/usr/bin/env node
 
-import { readFileSync } from "fs";
-import { join } from "path";
-
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { BuildingLink } from "buildinglink";
 import { z } from "zod";
 
-console.log("Starting BuildingLink MCP server");
-
-// Get version from package.json
-const { version } = JSON.parse(readFileSync(join(process.cwd(), "package.json"), "utf-8"));
-
 // Create an MCP server
 const server = new McpServer({
   name: "BuildingLink",
   description: "A MCP server for BuildingLink",
-  version,
+  version: "1.0.14",
 });
 
 if (!process.env.BUILDINGLINK_USERNAME || !process.env.BUILDINGLINK_PASSWORD) {
