@@ -4,12 +4,18 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { BuildingLink } from "buildinglink";
 
+console.log("Starting BuildingLink MCP server");
+
 // Create an MCP server
 const server = new McpServer({
   name: "BuildingLink",
   description: "A MCP server for BuildingLink",
   version: "1.0.0",
 });
+
+if (!process.env.BUILDINGLINK_USERNAME || !process.env.BUILDINGLINK_PASSWORD) {
+  throw new Error("BUILDINGLINK_USERNAME and BUILDINGLINK_PASSWORD must be set");
+}
 
 // Login to BuildingLink
 const buildingLink = new BuildingLink({

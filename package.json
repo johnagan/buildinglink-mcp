@@ -3,18 +3,18 @@
   "description": "MCP server for BuildingLink",
   "main": "dist/index.js",
   "module": "src/index.ts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "repository": "https://github.com/johnagan/buildinglink-mcp",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "bin": {
-    "mcp-server-buildinglink": "dist/index.js"
+    "buildinglink-mcp-server": "dist/index.js"
   },
   "scripts": {
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
-    "build": "rm -rf dist && tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\""
+    "build": "rm -rf dist && tsc && chmod +x dist/index.js"
   },
   "keywords": [
     "buildinglink",
