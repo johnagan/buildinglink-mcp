@@ -3,7 +3,7 @@
   "description": "MCP server for BuildingLink",
   "main": "dist/index.js",
   "module": "src/index.ts",
-  "version": "1.0.7",
+  "version": "",
   "type": "module",
   "repository": "https://github.com/johnagan/buildinglink-mcp",
   "publishConfig": {
