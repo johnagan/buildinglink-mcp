@@ -1,0 +1,32 @@
+{
+  "name": "buildinglink-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "debug": "node --inspect --env-file=.env --experimental-strip-types --no-warnings src/index.ts",
+    "serve": "node --env-file=.env --experimental-strip-types src/index.ts",
+    "inspect": "npx @modelcontextprotocol/inspector pnpm debug",
+    "build": "rm -rf dist && tsc",
+    "publish": "pnpm publish --provenance --access public --no-git-checks"
+  },
+  "keywords": [
+    "buildinglink",
+    "client",
+    "library",
+    "hoa",
+    "mcp"
+  ],
+  "author": "John Agan <johnagan@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "buildinglink": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3"
+  }
+}
