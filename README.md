@@ -27,7 +27,7 @@ The username and password should be the same that's used to login to the Buildin
   "mcpServers": {
     "buildinglink": {
       "command": "npx",
-      "args": ["-y", "@johnagan/buildinglink-mcp"],
+      "args": ["-y", "johnagan/buildinglink-mcp"],
       "env": {
         "BUILDINGLINK_USERNAME": "your-username",
         "BUILDINGLINK_PASSWORD": "your-password"
