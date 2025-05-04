@@ -3,7 +3,7 @@
   "description": "MCP server for BuildingLink",
   "main": "dist/index.js",
   "module": "src/index.ts",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "repository": "https://github.com/johnagan/buildinglink-mcp",
   "publishConfig": {
@@ -14,8 +14,7 @@
   },
   "scripts": {
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
-    "build": "rm -rf dist && tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
-    "publish": "pnpm publish --provenance --access public --no-git-checks"
+    "build": "rm -rf dist && tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\""
   },
   "keywords": [
     "buildinglink",
