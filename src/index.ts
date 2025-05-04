@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { BuildingLink } from "buildinglink";
@@ -119,15 +121,25 @@ server.resource("announcements", "buildinglink://announcements", async (uri) => 
   };
 });
 
-async function startServer() {
-  await buildingLink.login();
-  if (!buildingLink.isAuthenticated) {
-    throw new Error("Failed to login to BuildingLink");
-  }
+async function main() {
+  try {
+    await buildingLink.login();
+    if (!buildingLink.isAuthenticated) {
+      throw new Error("Failed to login to BuildingLink");
+    }
 
-  // Start receiving messages on stdin and sending messages on stdout
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
+    // Start receiving messages on stdin and sending messages on stdout
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
+
+    console.error("MCP Server running on stdio");
+  } catch (error) {
+    console.error("Error starting MCP server:", error);
+    process.exit(1);
+  }
 }
 
-startServer();
+main().catch((error) => {
+  console.error("Fatal error in main():", error);
+  process.exit(1);
+});
