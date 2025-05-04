@@ -29,7 +29,7 @@ The username and password should be the same that's used to login to the Buildin
       "command": "npx",
       "args": ["-y", "@johnagan/buildinglink-mcp"],
       "env": {
-        "BUILDINGLINK_USERNAME": "your-email@home.com",
+        "BUILDINGLINK_USERNAME": "your-username",
         "BUILDINGLINK_PASSWORD": "your-password"
       }
     }
