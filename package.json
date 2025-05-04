@@ -8,6 +8,9 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "bin": {
+    "mcp-server-buildinglink": "dist/index.js"
+  },
   "scripts": {
     "debug": "node --inspect --env-file=.env --experimental-strip-types --no-warnings src/index.ts",
     "serve": "node --env-file=.env --experimental-strip-types src/index.ts",
