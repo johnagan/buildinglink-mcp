@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "type": "module",
+  "repository": "https://github.com/johnagan/buildinglink-mcp",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "debug": "node --inspect --env-file=.env --experimental-strip-types --no-warnings src/index.ts",
     "serve": "node --env-file=.env --experimental-strip-types src/index.ts",
