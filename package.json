@@ -14,7 +14,8 @@
   },
   "scripts": {
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
-    "build": "rm -rf dist && tsc && chmod +x dist/index.js"
+    "build": "rm -rf dist && tsc && chmod +x dist/index.js",
+    "prepare": "npm run build"
   },
   "keywords": [
     "buildinglink",
