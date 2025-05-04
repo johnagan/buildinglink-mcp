@@ -1,16 +1,23 @@
 #!/usr/bin/env node
 
+import { readFileSync } from "fs";
+import { join } from "path";
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { BuildingLink } from "buildinglink";
+import { z } from "zod";
 
 console.log("Starting BuildingLink MCP server");
+
+// Get version from package.json
+const { version } = JSON.parse(readFileSync(join(process.cwd(), "package.json"), "utf-8"));
 
 // Create an MCP server
 const server = new McpServer({
   name: "BuildingLink",
   description: "A MCP server for BuildingLink",
-  version: "1.0.0",
+  version,
 });
 
 if (!process.env.BUILDINGLINK_USERNAME || !process.env.BUILDINGLINK_PASSWORD) {
@@ -25,114 +32,121 @@ const buildingLink = new BuildingLink({
   subscriptionKey: process.env.BUILDINGLINK_SUBSCRIPTION_KEY!,
 });
 
-server.resource("occupant", "buildinglink://occupant", async (uri) => {
+await buildingLink.login();
+
+server.tool("getOccupant", async () => {
   const occupant = await buildingLink.getOccupant();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(occupant),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("vendors", "buildinglink://vendors", async (uri) => {
-  // await buildingLink.login();
+server.tool("getVendors", async () => {
   const vendors = await buildingLink.getVendors();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(vendors),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("token", "buildinglink://token", async (uri) => {
+server.tool("getToken", async () => {
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(buildingLink.token),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("building", "buildinglink://building", async (uri) => {
+server.tool("getBuildings", async () => {
   const building = await buildingLink.getBuildings();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(building),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("user", "buildinglink://user", async (uri) => {
+server.tool("getUser", async () => {
   const user = await buildingLink.getUser();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(user),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("deliveries", "buildinglink://deliveries", async (uri) => {
+server.tool("getDeliveries", async () => {
   const deliveries = await buildingLink.getDeliveries();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(deliveries),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("library", "buildinglink://library", async (uri) => {
+server.tool("getLibrary", async () => {
   const library = await buildingLink.getLibrary();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(library),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-server.resource("announcements", "buildinglink://announcements", async (uri) => {
+server.tool("getAnnouncements", async () => {
   const announcements = await buildingLink.getAnnouncements();
   return {
-    contents: [
+    content: [
       {
         text: JSON.stringify(announcements),
-        mimeType: "application/json",
-        uri: uri.toString(),
+        type: "text",
       },
     ],
   };
 });
 
-await buildingLink.login();
-if (!buildingLink.isAuthenticated) {
-  throw new Error("Failed to login to BuildingLink");
-}
+server.tool(
+  "getEvents",
+  {
+    from: z.date(),
+    to: z.date(),
+  },
+  async ({ from, to }) => {
+    const events = await buildingLink.getEvents(from, to);
+    return {
+      content: [
+        {
+          text: JSON.stringify(events),
+          type: "text",
+        },
+      ],
+    };
+  }
+);
 
 // Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();
