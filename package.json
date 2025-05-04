@@ -23,12 +23,18 @@
     "hoa",
     "mcp"
   ],
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
   "author": "John Agan <johnagan@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.10.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.11.0",
-    "buildinglink": "^1.3.0"
+    "buildinglink": "^1.3.2"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",

@@ -12,8 +12,8 @@ importers:
         specifier: ^1.11.0
         version: 1.11.0
       buildinglink:
-        specifier: ^1.3.0
-        version: 1.3.0
+        specifier: ^1.3.2
+        version: 1.3.2
     devDependencies:
       '@types/node':
         specifier: ^22.15.3
@@ -42,8 +42,8 @@ packages:
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
-  buildinglink@1.3.0:
-    resolution: {integrity: sha512-3lMvn5eeeD2mWKdy9qK2RMINJmBcDH+KFrTG+uHzoyTwRvuzFSX50l4CZyiqRBLERHN76JIqJptXxer5m/o8wQ==}
+  buildinglink@1.3.2:
+    resolution: {integrity: sha512-//IMtoJv44holUWbexCzQIPGACIxpho4vH3qSbXRmXKjtPlP1cGZ/fcmeYuH/Spe7dyHDy8xOyeKjBReMnMHpw==}
 
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
@@ -437,7 +437,7 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  buildinglink@1.3.0:
+  buildinglink@1.3.2:
     dependencies:
       node-html-parser: 7.0.1
       zod: 3.24.3
