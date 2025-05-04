@@ -121,25 +121,11 @@ server.resource("announcements", "buildinglink://announcements", async (uri) => 
   };
 });
 
-async function main() {
-  try {
-    await buildingLink.login();
-    if (!buildingLink.isAuthenticated) {
-      throw new Error("Failed to login to BuildingLink");
-    }
-
-    // Start receiving messages on stdin and sending messages on stdout
-    const transport = new StdioServerTransport();
-    await server.connect(transport);
-
-    console.error("MCP Server running on stdio");
-  } catch (error) {
-    console.error("Error starting MCP server:", error);
-    process.exit(1);
-  }
+await buildingLink.login();
+if (!buildingLink.isAuthenticated) {
+  throw new Error("Failed to login to BuildingLink");
 }
 
-main().catch((error) => {
-  console.error("Fatal error in main():", error);
-  process.exit(1);
-});
+// Start receiving messages on stdin and sending messages on stdout
+const transport = new StdioServerTransport();
+await server.connect(transport);
