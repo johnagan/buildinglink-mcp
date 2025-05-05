@@ -13,7 +13,7 @@
     "buildinglink-mcp-server": "dist/index.js"
   },
   "scripts": {
-    "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
+    "inspector": "npx @modelcontextprotocol/inspector npm run dev",
     "dev": "node --inspect --env-file=.env --experimental-strip-types src/index.ts",
     "build": "rm -rf dist && tsc && chmod +x dist/index.js",
     "watch": "tsc --watch",

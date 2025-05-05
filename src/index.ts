@@ -20,8 +20,7 @@ if (!process.env.BUILDINGLINK_USERNAME || !process.env.BUILDINGLINK_PASSWORD) {
 const buildingLink = new BuildingLink({
   username: process.env.BUILDINGLINK_USERNAME!,
   password: process.env.BUILDINGLINK_PASSWORD!,
-  apiKey: process.env.BUILDINGLINK_API_KEY!,
-  subscriptionKey: process.env.BUILDINGLINK_SUBSCRIPTION_KEY!,
+  apiKey: process.env.BUILDINGLINK_API_KEY,
 });
 
 await buildingLink.login();

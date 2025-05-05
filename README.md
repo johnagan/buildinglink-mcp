@@ -31,9 +31,7 @@ The username and password should be the same that's used to login to the Buildin
       "args": ["-y", "johnagan/buildinglink-mcp"],
       "env": {
         "BUILDINGLINK_USERNAME": "your-username",
-        "BUILDINGLINK_PASSWORD": "your-password",
-        "BUILDINGLINK_API_KEY": "buildinglink-api-key",
-        "BUILDINGLINK_SUBSCRIPTION_KEY": "buildinglink-ocp-apim-subscription-key"
+        "BUILDINGLINK_PASSWORD": "your-password"
       }
     }
   }
